@@ -1,0 +1,12 @@
+.todo-container {
+  display: grid;
+  grid-template-columns: 10% 10%;
+}
+.todo-name {
+  display: flex;
+  align-items: center;
+}
+.todo-delete {
+  cursor: pointer;
+  font-size: 2em;
+}
