@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { todoReducer } from "./reducer";
 import { Todo } from "./todo";
+import { ConnectedApp } from "./connected";
 
 import "./style.scss";
 
@@ -17,17 +18,17 @@ export const App = () => {
 
   useEffect(() => {
     document.title = `Вы нажали ${count} раз`;
-    console.log(todos);
   });
   const inputRef = useRef();
 
   const addTodo = event => {
     event.preventDefault();
-    dispatch({
+    const t = dispatch({
       type: "ADD_TODO",
       name: inputRef.current.value,
       complete: false
     });
+    console.log('t', t);
     inputRef.current.value = "";
   };
 
@@ -50,6 +51,7 @@ export const App = () => {
           />
         </form>
       </div>
+      <ConnectedApp />
     </div>
   );
 };

@@ -1,14 +1,18 @@
-// const express = require('express');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
-// const app = express();
-// const PORT = process.env.PORT || 3000;
+import {App} from './app/app';
+import './app/style.scss';
 
-// app.get('/', (req, res) => res.send('Index'));
+import * as reducers from './store/reducers';
+const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 
-// app.listen(PORT, () => console.log(`Start at port: ${PORT}`));
-
-import React from "react";
-import ReactDOM from "react-dom";
-import { App } from "./app/app";
-
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);
